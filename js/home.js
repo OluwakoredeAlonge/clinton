@@ -4,13 +4,13 @@
   Site.init({ active: 'index.html' });
 
   // hero collage
-  const c = [['w1', 'left-0 top-0 w-[58%] -rotate-2', 'z-10'], ['w5', 'right-0 top-[12%] w-[44%] rotate-3', 'z-20'], ['w14', 'left-[16%] bottom-0 w-[46%] rotate-1', 'z-30']];
-  $('#collage').innerHTML = c.map(([id, pos, z], i) => {
+  const c = [['w1', 'left-0 top-0 w-[58%] -rotate-2', 'z-10', .05, 14], ['w5', 'right-0 top-[12%] w-[44%] rotate-3', 'z-20', -.07, -22], ['w14', 'left-[16%] bottom-0 w-[46%] rotate-1', 'z-30', .12, 30]];
+  $('#collage').innerHTML = c.map(([id, pos, z, sp, dp], i) => {
     const w = Site.byId[id];
-    return `<figure class="absolute ${pos} ${z} shadow-[0_30px_50px_-20px_rgba(20,17,15,.55)] bg-paper p-1.5 md:p-2 transition-transform duration-700 hover:-translate-y-2 hover:rotate-0" style="animation:float ${6 + i}s ease-in-out ${i}s infinite alternate">
+    return `<figure data-parallax="${sp}" data-depth="${dp}" class="absolute ${pos} ${z} shadow-[0_30px_50px_-20px_rgba(20,17,15,.55)] bg-paper p-1.5 md:p-2" style="animation:rise 1.3s cubic-bezier(.2,.7,.2,1) ${.9 + i * .18}s backwards">
       ${img(w, { cls: 'w-full block', eager: true, res: 720 })}
       <figcaption class="eyebrow text-smoke text-[9px] mt-1.5">Fig. 0${i + 1} — ${esc(w.title)}, ${w.year}</figcaption></figure>`;
-  }).join('') + `<style>@keyframes float{from{translate:0 -6px}to{translate:0 8px}}</style>`;
+  }).join('');
 
   // marquee
   const words = ['Landscape', 'Portrait', 'Seascape', 'Abstract', 'Still life', 'Figurative', 'City', 'Oil', 'Acrylic', 'Watercolour', 'Ink'];

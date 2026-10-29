@@ -67,3 +67,59 @@ details[open] .chev { transform: rotate(180deg); }
 
 .drop { border: 1.5px dashed rgba(20,17,15,.3); transition: all .25s; }
 .drop.over { border-color: #c9411b; background: rgba(201,65,27,.06); }
+
+/* ================= Motion ================= */
+html:not(.ready) body::before { content: ""; position: fixed; inset: 0; background: #14110f; z-index: 300; }
+
+#curtain { position: fixed; inset: 0; z-index: 300; background: #14110f; color: #f3eee5; display: flex; align-items: center; justify-content: center; font-size: clamp(2.5rem, 8vw, 6rem); transition: transform .9s cubic-bezier(.76,0,.24,1); will-change: transform; }
+#curtain span { transition: opacity .4s, transform .7s cubic-bezier(.2,.7,.2,1); }
+#curtain.open { transform: translateY(-100%); }
+#curtain.open span { opacity: 0; transform: translateY(-40px); }
+#curtain.enter { transform: translateY(100%); transition-duration: .65s; }
+#curtain.enter.leave { transform: none; }
+
+#prog { position: fixed; top: 0; left: 0; right: 0; height: 2px; background: #c9411b; transform: scaleX(0); transform-origin: 0 50%; z-index: 120; }
+
+/* heading word reveal */
+.sw { display: inline-block; overflow: hidden; vertical-align: bottom; padding: 0 .08em .14em 0; margin: 0 -.08em -.14em 0; }
+.swi { display: inline-block; transform: translateY(112%) rotate(4deg); transform-origin: 0 100%; transition: transform 1.1s cubic-bezier(.2,.8,.2,1); }
+.split-in .swi { transform: none; }
+
+/* image wipe inside revealed blocks */
+.reveal:not(.in) img { clip-path: inset(0 0 100% 0); }
+.reveal.in img { animation: unclip 1.3s cubic-bezier(.7,0,.2,1) backwards; }
+@keyframes unclip { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0 0 0 0); } }
+
+/* hero collage entrance */
+@keyframes rise { from { opacity: 0; filter: blur(10px); scale: .9; } }
+
+/* buttons */
+.btn svg { transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+.btn:hover svg { transform: translateX(4px); }
+
+/* custom cursor ring */
+html.has-cursor .hall-frame, html.has-cursor .hall-view, html.has-cursor .cursor-zoom-in { cursor: none; }
+#cur-ring { position: fixed; top: 0; left: 0; z-index: 250; width: 0; height: 0; pointer-events: none; opacity: 0; transition: opacity .3s; }
+#cur-ring::before { content: ""; position: absolute; left: -17px; top: -17px; width: 34px; height: 34px; border: 1px solid #fff; border-radius: 50%; mix-blend-mode: difference; transition: all .35s cubic-bezier(.2,.7,.2,1); }
+#cur-ring.hot::before { left: -28px; top: -28px; width: 56px; height: 56px; background: #fff; }
+#cur-ring.label::before { left: -44px; top: -44px; width: 88px; height: 88px; background: #c9411b; border-color: #c9411b; mix-blend-mode: normal; }
+#cur-ring span { position: absolute; left: -44px; top: -44px; width: 88px; height: 88px; display: flex; align-items: center; justify-content: center; color: #fff; font: 500 11px 'DM Mono', monospace; letter-spacing: .16em; text-transform: uppercase; opacity: 0; transform: scale(.6); transition: all .35s; }
+#cur-ring.label span { opacity: 1; transform: none; }
+
+/* lightbox */
+#lb:not(.hidden) { animation: lbin .45s ease; }
+#lb:not(.hidden) #lb-stage > * { animation: lbimg .8s cubic-bezier(.2,.7,.2,1); }
+#lb:not(.hidden) #lb-info > * { animation: lbtxt .7s cubic-bezier(.2,.7,.2,1) backwards; }
+#lb-info > *:nth-child(2) { animation-delay: .06s !important; } #lb-info > *:nth-child(3) { animation-delay: .12s !important; } #lb-info > *:nth-child(4) { animation-delay: .18s !important; } #lb-info > *:nth-child(5) { animation-delay: .24s !important; } #lb-info > *:nth-child(6) { animation-delay: .3s !important; }
+@keyframes lbin { from { opacity: 0; } }
+@keyframes lbimg { from { opacity: 0; transform: scale(.94) translateY(20px); } }
+@keyframes lbtxt { from { opacity: 0; transform: translateY(18px); } }
+
+/* hall: spotlights brighten as you approach */
+.hall-spot, .hall-fixture { opacity: var(--lit, 1); }
+.hall-frame { filter: brightness(calc(.45 + var(--lit, 1) * .55)); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .marquee { animation: none; } .reveal { opacity: 1; transform: none; } .swi { transform: none; } .reveal:not(.in) img { clip-path: none; }
+}

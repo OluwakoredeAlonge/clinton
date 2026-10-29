@@ -155,7 +155,8 @@
 
   /* ================= THE HALL ================= */
   const view = $('#hallView'), track = $('#track'), hall = $('#hall');
-  let target = 0, raf = 0, dragged = false, segs = [], hallVisible = false;
+  let target = 0, raf = 0, dragged = false, segs = [], bays = [], hallVisible = false;
+  const heroImg = document.querySelector('#app section img'); if (heroImg) heroImg.dataset.parallax = '.18';
   const person = (h, left) => `<svg class="absolute" style="left:${left}px;bottom:${view.dataset.floor - 4}px;height:${h}px;opacity:.42" viewBox="0 0 40 175" fill="#f3eee5"><circle cx="20" cy="12" r="11"/><path d="M8 28h24l5 70-6 2-3 60h-9l-1-45-1 45h-9l-3-60-6-2z"/></svg>`;
 
   function buildHall() {
@@ -182,7 +183,7 @@
           ${floor}${person(175 * s, 330)}</div>
         ${r.works.map(w => {
           const pw = w.w * s, bottom = Math.max(floorH + 24 * s, floorH + (155 - w.h / 2) * s), n = ex.works.indexOf(w);
-          return `<div class="relative shrink-0 h-full" style="width:${pw + GAP}px">
+          return `<div data-bay class="relative shrink-0 h-full" style="width:${pw + GAP}px">
             <div class="hall-spot" style="width:${pw * 2.6 + 160}px"></div><div class="hall-fixture"></div>
             <div class="absolute" style="left:${GAP / 2}px;bottom:${bottom}px;width:${pw}px">
               <div data-hw="${n}" class="hall-frame">${img(w, { cls: 'w-full block', res: Math.min(1100, Math.max(520, Math.round(pw * 1.6))), eager: true })}</div></div>
@@ -202,6 +203,8 @@
 
     track.innerHTML = h;
     Site.refresh(track);
+    const tl = track.getBoundingClientRect().left;
+    bays = [...track.querySelectorAll('[data-bay]')].map(el => { const r = el.getBoundingClientRect(); return { el, cx: r.left - tl + r.width / 2 }; });
 
     // minimap
     const segEls = [...track.querySelectorAll('[data-seg]')];
@@ -213,7 +216,14 @@
     view.scrollLeft = ratio * (view.scrollWidth - view.clientWidth); target = view.scrollLeft; updateThumb();
   }
 
+  // spotlights brighten as you walk up to a painting
+  function updateLit() {
+    const mid = view.scrollLeft + view.clientWidth / 2, span = view.clientWidth * .55;
+    bays.forEach(b => b.el.style.setProperty('--lit', Math.max(.12, 1 - Math.pow(Math.abs(b.cx - mid) / span, 1.3)).toFixed(3)));
+  }
+
   function updateThumb() {
+    updateLit();
     const t = $('#thumb'); if (!t) return;
     const m = $('#mini'), total = view.scrollWidth;
     t.style.width = (view.clientWidth / total * 100) + '%'; t.style.left = (view.scrollLeft / total * 100) + '%';

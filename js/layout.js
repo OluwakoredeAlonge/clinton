@@ -54,6 +54,7 @@
   /* ---------- reveal / refresh ---------- */
   const rio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); } }), { threshold: .1 });
   function refresh(root = document) {
+    if (window.Motion) Motion.scan(root);
     Art.hydrate(root);
     root.querySelectorAll('.reveal:not(.in)').forEach(el => rio.observe(el));
     if (window.lucide) lucide.createIcons();
@@ -211,6 +212,8 @@
 
   /* ---------- init ---------- */
   function init({ active = '', dark = false } = {}) {
+    if (window.Motion) Motion.init();
+    setTimeout(() => document.documentElement.classList.add('ready'), 3000);
     $('#site-header').innerHTML = header(active, dark);
     $('#site-footer').innerHTML = footer();
     lightboxShell();
