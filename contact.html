@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Commissions & Enquiries — Clinton Vane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/config.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="grain">
+<div id="site-header"></div>
+<main class="pt-32 md:pt-40 pb-24">
+  <section class="max-w-[1500px] mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-5">
+      <p class="eyebrow text-smoke mb-4">Commissions & enquiries</p>
+      <h1 class="display text-[clamp(3.5rem,8vw,8rem)] leading-[.88] mb-8">Let's <em class="text-ember">talk</em> about your wall.</h1>
+      <p class="text-smoke max-w-md mb-10 leading-relaxed">Buying a work, commissioning something new, curating a show, a press request or a studio visit: tell us a little and the studio will reply within two working days.</p>
+      <div id="work-ref" class="hidden mb-10 border border-ink/15 p-4 flex gap-4 items-center bg-white/40"></div>
+      <ul class="space-y-5 text-sm">
+        <li class="flex gap-4"><i data-lucide="mail" class="w-5 h-5 text-ember"></i><a href="mailto:studio@clintonvane.art" class="underline-grow">studio@clintonvane.art</a></li>
+        <li class="flex gap-4"><i data-lucide="phone" class="w-5 h-5 text-ember"></i>+000 000 000 0000</li>
+        <li class="flex gap-4"><i data-lucide="map-pin" class="w-5 h-5 text-ember"></i>Studio 4, The Foundry, 12 Mill Lane<br>Visits by appointment</li>
+        <li class="flex gap-4"><i data-lucide="clock" class="w-5 h-5 text-ember"></i>Mon – Fri, 9:00 – 17:00</li>
+      </ul>
+    </div>
+
+    <form id="enq" class="lg:col-span-7 bg-white/40 border border-ink/10 p-6 md:p-12 space-y-10" onsubmit="event.preventDefault();Site.toast('Message sent. The studio will reply soon.');this.reset()">
+      <fieldset>
+        <legend class="eyebrow text-smoke mb-4">I'm writing about</legend>
+        <div class="grid sm:grid-cols-2 gap-3" id="types"></div>
+      </fieldset>
+      <div class="grid md:grid-cols-2 gap-x-8 gap-y-6">
+        <label><span class="eyebrow text-smoke">Name</span><input required class="field" placeholder="Your full name"></label>
+        <label><span class="eyebrow text-smoke">Email</span><input required type="email" class="field" placeholder="you@example.com"></label>
+        <label><span class="eyebrow text-smoke">Phone (optional)</span><input class="field"></label>
+        <label><span class="eyebrow text-smoke">Budget range</span><select class="field"><option>Not sure yet</option><option>Under $5,000</option><option>$5,000 – $15,000</option><option>$15,000 – $40,000</option><option>$40,000+</option></select></label>
+      </div>
+      <label class="block"><span class="eyebrow text-smoke">Tell us more: the room, the light, the mood, the size</span><textarea id="msg" required class="field !border !border-ink/20 mt-2 p-4 h-40" placeholder="Write freely."></textarea></label>
+      <button class="btn btn-ink">Send message <i data-lucide="send" class="w-4 h-4"></i></button>
+    </form>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-5 md:px-10 mt-28">
+    <h2 class="display text-5xl md:text-6xl mb-10">Good <em>questions</em></h2>
+    <div id="faq" class="border-t border-ink/20"></div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/art.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  Site.init({ active: 'contact.html' });
+  const params = new URLSearchParams(location.search), wid = params.get('work'), w = wid && Site.allWorks().find(x => x.id === wid);
+  const types = [['shopping-bag', 'Buying a painting'], ['paintbrush', 'Commissioning a work'], ['layout-grid', 'Exhibition or curation'], ['newspaper', 'Press'], ['door-open', 'Studio visit'], ['message-circle', 'Something else']];
+  const pre = w ? 0 : (params.get('type') ? +params.get('type') : 1);
+  document.getElementById('types').innerHTML = types.map(([ic, l], i) => `<label class="cursor-pointer"><input type="radio" name="t" class="peer sr-only" ${i === pre ? 'checked' : ''}><span class="flex items-center gap-3 border border-ink/20 p-4 transition peer-checked:bg-ink peer-checked:text-paper peer-checked:border-ink hover:border-ink"><i data-lucide="${ic}" class="w-4 h-4"></i>${l}</span></label>`).join('');
+  if (w) {
+    document.getElementById('work-ref').classList.remove('hidden');
+    document.getElementById('work-ref').innerHTML = `<div class="w-16 shrink-0">${Site.img(w, { cls: 'w-full block', res: 160, eager: true })}</div><div><p class="eyebrow text-smoke">Enquiring about</p><p class="display text-2xl">${Site.esc(w.title)}, ${w.year}</p><p class="text-xs text-smoke">${Site.esc(w.medium)} · ${Site.dims(w)}</p></div>`;
+    document.getElementById('msg').value = `I'd like to know more about "${w.title}" (${w.year}).`;
+  }
+  const faq = [['Do you ship paintings internationally?', 'Yes. Works are crated by specialist art handlers and fully insured door to door. Shipping is quoted per work.'], ['How long does a commission take?', 'Most commissions take between three and six months, depending on scale. A deposit secures a studio slot, and you see progress photographs along the way.'], ['Are the paintings framed?', 'Canvases are supplied unframed with finished edges. Works on paper are delivered mounted. Framing can be arranged.'], ['Do works come with certificates?', 'Every original is signed and comes with a certificate of authenticity and a studio provenance record.'], ['Can I visit the studio?', 'Visits are by appointment. Send a note above and we will find a time.']];
+  document.getElementById('faq').innerHTML = faq.map(([q, a]) => `<details class="border-b border-ink/20 py-6 group"><summary class="flex justify-between items-center gap-6"><span class="display text-2xl md:text-3xl">${q}</span><i data-lucide="chevron-down" class="chev w-5 h-5 transition shrink-0"></i></summary><p class="text-smoke mt-4 max-w-2xl leading-relaxed">${a}</p></details>`).join('');
+  Site.refresh();
+</script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Exhibitions — Clinton Vane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/config.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="grain">
+<div id="site-header"></div>
+<main class="pt-32 md:pt-40">
+  <section class="max-w-[1500px] mx-auto px-5 md:px-10 pb-16">
+    <p class="eyebrow text-smoke mb-4">Solo exhibitions · every one or two years</p>
+    <h1 class="display text-[clamp(4rem,12vw,11rem)] leading-[.85]">Whole <em class="text-ember">worlds,</em><br>hung on walls.</h1>
+    <p class="max-w-lg text-smoke mt-8 leading-relaxed">Each exhibition is a new body of work, made at scale and staged room by room. Step inside any of them: walk the hall, read the curator's notes, and see every painting where it was hung.</p>
+  </section>
+
+  <section id="featured" class="pb-24"></section>
+
+  <section class="bg-ink text-paper py-24">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+      <div class="flex flex-wrap items-end justify-between gap-6 mb-14 reveal">
+        <h2 class="display text-5xl md:text-7xl leading-none">The <em>archive</em></h2>
+        <p class="eyebrow text-paper/50">Hover a year to preview · click to enter</p>
+      </div>
+      <div class="grid lg:grid-cols-[1fr_minmax(360px,38%)] gap-14">
+        <ul id="rows" class="border-t border-paper/15"></ul>
+        <div class="hidden lg:block"><div id="preview" class="sticky top-28"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid grid-cols-2 md:grid-cols-4 gap-10 text-center" id="stats"></div>
+  </section>
+
+  <section class="bg-bone py-24 text-center">
+    <div class="max-w-2xl mx-auto px-5 reveal">
+      <i data-lucide="ticket" class="w-8 h-8 mx-auto mb-5 text-ember"></i>
+      <h2 class="display text-5xl md:text-6xl leading-none mb-5">Opening nights are by <em>invitation.</em></h2>
+      <p class="text-smoke mb-8">Join the studio letter and you will hear about the next exhibition before anyone else.</p>
+      <form class="flex max-w-md mx-auto border-b border-ink/30 focus-within:border-ember" onsubmit="event.preventDefault();Site.toast('You are on the list.');this.reset()">
+        <input type="email" required placeholder="Your email" class="flex-1 bg-transparent py-3 outline-none"><button class="px-2" aria-label="Join"><i data-lucide="arrow-right" class="w-5 h-5"></i></button>
+      </form>
+    </div>
+  </section>
+</main>
+<div id="site-footer"></div>
+<script src="js/art.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/exhibitions.js"></script>
+</body>
+</html>

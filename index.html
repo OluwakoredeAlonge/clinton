@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Clinton Vane — Painter</title>
+  <meta name="description" content="Clinton Vane is a full-time painter working in oil, acrylic, watercolour and ink. Gallery, exhibitions and commissions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/config.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="grain">
+<div id="site-header"></div>
+
+<main>
+  <!-- HERO -->
+  <section class="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 relative z-10">
+        <p class="eyebrow text-smoke mb-6 flex items-center gap-3"><span class="w-10 h-px bg-ink"></span>Painter · Studio-based · Since 2011</p>
+        <h1 class="display text-[clamp(3.6rem,10.5vw,10.5rem)] leading-[.88]">Colour<br>keeps the <em class="text-ember">memory</em><br>of light.</h1>
+        <p class="mt-8 max-w-md text-smoke leading-relaxed">Large-scale paintings in oil, acrylic, watercolour and ink. Landscapes, portraits, seascapes and the spaces between: made in one studio, shown in rooms like the one you are about to walk through.</p>
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a href="gallery.html" class="btn btn-ink">Enter the gallery <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+          <a href="exhibitions.html" class="btn btn-line">Walk an exhibition <i data-lucide="door-open" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+      <div class="lg:col-span-5 relative h-[460px] md:h-[620px]" id="collage"></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <section class="bg-ink text-paper py-5 overflow-hidden" aria-hidden="true">
+    <div class="marquee display text-3xl md:text-4xl" id="marquee"></div>
+  </section>
+
+  <!-- SELECTED WORKS -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10 flex items-end justify-between gap-6 mb-12 reveal">
+      <div>
+        <p class="eyebrow text-smoke mb-3">Selected works</p>
+        <h2 class="display text-5xl md:text-7xl leading-none">Recent <em>paintings</em></h2>
+      </div>
+      <div class="hidden md:flex gap-2">
+        <button id="sel-prev" class="p-4 rounded-full border border-ink/20 hover:bg-ink hover:text-paper transition" aria-label="Previous"><i data-lucide="arrow-left" class="w-5 h-5"></i></button>
+        <button id="sel-next" class="p-4 rounded-full border border-ink/20 hover:bg-ink hover:text-paper transition" aria-label="Next"><i data-lucide="arrow-right" class="w-5 h-5"></i></button>
+      </div>
+    </div>
+    <div id="selected" class="flex gap-6 md:gap-10 overflow-x-auto no-scrollbar snap-x snap-mandatory px-5 md:px-10 items-end pb-4"></div>
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10 mt-10"><a href="gallery.html" class="inline-flex items-center gap-3 uppercase text-[12px] tracking-[.18em] underline-grow pb-1">View all works <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a></div>
+  </section>
+
+  <!-- NOW SHOWING -->
+  <section id="showing" class="bg-hall text-paper"></section>
+
+  <!-- SUBJECTS -->
+  <section class="py-24 md:py-32">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+      <div class="reveal mb-14"><p class="eyebrow text-smoke mb-3">Subjects</p><h2 class="display text-5xl md:text-7xl leading-none">Everything <em>a brush</em> can be asked</h2></div>
+      <ul id="subjects" class="border-t border-ink/15"></ul>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="bg-bone py-24 md:py-32">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-14 items-center">
+      <div class="lg:col-span-5 reveal relative">
+        <div id="about-img" class="max-w-md"></div>
+        <p class="eyebrow text-smoke mt-3">Placeholder · Portrait of the artist in the studio</p>
+      </div>
+      <div class="lg:col-span-7 reveal">
+        <p class="eyebrow text-smoke mb-3">The painter</p>
+        <h2 class="display text-5xl md:text-7xl leading-[.95] mb-8">Fifteen years of showing up <em>before the light does.</em></h2>
+        <p class="text-lg text-smoke max-w-xl leading-relaxed mb-12">Clinton left a teaching job in 2011 to paint full time. Since then: six solo exhibitions, work in public and private collections, and a studio that is never quiet for long. Every show is a new body of work, built on a large scale and hung with care.</p>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-ink/20 pt-8 mb-10" id="counters"></div>
+        <a href="about.html" class="btn btn-ink">Read the story <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMISSION -->
+  <section class="bg-ember text-paper py-24 md:py-32 text-center">
+    <div class="max-w-4xl mx-auto px-5 reveal">
+      <i data-lucide="paintbrush" class="w-8 h-8 mx-auto mb-6"></i>
+      <h2 class="display text-5xl md:text-8xl leading-[.9] mb-8">Have a wall <em>waiting?</em></h2>
+      <p class="max-w-xl mx-auto text-paper/85 mb-10">Commissions for homes, offices, hotels and collections. Tell us the room, the light and the mood, and the studio will take it from there.</p>
+      <a href="contact.html" class="btn btn-light">Start a commission <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/art.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/home.js"></script>
+</body>
+</html>

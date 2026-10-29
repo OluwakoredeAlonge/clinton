@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>About — Clinton Vane</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/config.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="grain">
+<div id="site-header"></div>
+<main class="pt-32 md:pt-40">
+  <section class="max-w-[1500px] mx-auto px-5 md:px-10 pb-24 grid lg:grid-cols-12 gap-14">
+    <div class="lg:col-span-7">
+      <p class="eyebrow text-smoke mb-4">About the artist</p>
+      <h1 class="display text-[clamp(3.5rem,9vw,9rem)] leading-[.88] mb-10">A life spent <em class="text-ember">mixing</em> the right red.</h1>
+      <div class="space-y-6 text-lg text-ink/80 leading-relaxed max-w-2xl">
+        <p>Clinton Vane paints full time from a converted foundry studio. The work spans landscape, portraiture, seascape, still life and pure abstraction, in oil, acrylic, watercolour, gouache, ink and pastel, often at a scale that asks the viewer to step back, then step in.</p>
+        <p>Every year or two the studio closes its doors, and the year's work leaves for a gallery. Each exhibition is built as a journey: rooms with their own mood, a curator's hand, and a catalogue to take home.</p>
+        <p>This is placeholder biography text. Replace it with the artist's own words, including training, influences and what drives the work.</p>
+      </div>
+    </div>
+    <div class="lg:col-span-5 relative reveal">
+      <div id="a1" class="max-w-md ml-auto"></div>
+      <div id="a2" class="w-2/5 absolute -bottom-10 -left-2 md:-left-10 shadow-2xl border-4 border-paper"></div>
+    </div>
+  </section>
+
+  <section class="bg-ink text-paper py-24">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+      <h2 class="display text-5xl md:text-7xl leading-none mb-14 reveal">The <em>process</em></h2>
+      <div class="grid md:grid-cols-4 gap-px bg-paper/15">
+        <div class="bg-ink p-8 reveal"><i data-lucide="notebook-pen" class="w-6 h-6 text-ember mb-6"></i><p class="display text-3xl mb-2">Sketch</p><p class="text-paper/60 text-sm">Months of drawings, colour notes and walks before a single canvas is stretched.</p></div>
+        <div class="bg-ink p-8 reveal"><i data-lucide="layers" class="w-6 h-6 text-ember mb-6"></i><p class="display text-3xl mb-2">Build</p><p class="text-paper/60 text-sm">Thin glazes over a toned ground, each layer left to settle before the next.</p></div>
+        <div class="bg-ink p-8 reveal"><i data-lucide="eraser" class="w-6 h-6 text-ember mb-6"></i><p class="display text-3xl mb-2">Scrape</p><p class="text-paper/60 text-sm">Knives, rags and patience: removing what the painting doesn't need.</p></div>
+        <div class="bg-ink p-8 reveal"><i data-lucide="frame" class="w-6 h-6 text-ember mb-6"></i><p class="display text-3xl mb-2">Hang</p><p class="text-paper/60 text-sm">The work isn't finished until it is on a wall, in the right light.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-24 md:py-32">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid lg:grid-cols-12 gap-14">
+      <h2 class="lg:col-span-4 display text-5xl md:text-7xl leading-none">Career <em>so far</em></h2>
+      <ol id="timeline" class="lg:col-span-8 border-t border-ink/20"></ol>
+    </div>
+  </section>
+
+  <section class="bg-bone py-24">
+    <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid md:grid-cols-3 gap-12">
+      <div class="reveal"><p class="eyebrow text-smoke mb-4 flex items-center gap-2"><i data-lucide="landmark" class="w-4 h-4"></i>Public collections</p><ul class="space-y-2 text-lg"><li>National Collection</li><li>Civic Gallery Permanent Collection</li><li>University Art Museum</li><li>Harbourside Arts Trust</li></ul></div>
+      <div class="reveal"><p class="eyebrow text-smoke mb-4 flex items-center gap-2"><i data-lucide="award" class="w-4 h-4"></i>Awards & residencies</p><ul class="space-y-2 text-lg"><li>Emerging Painter Prize, 2018</li><li>Coastal Residency, 2023</li><li>Arts Council Grant, 2020</li></ul></div>
+      <div class="reveal"><p class="eyebrow text-smoke mb-4 flex items-center gap-2"><i data-lucide="newspaper" class="w-4 h-4"></i>Selected press</p><ul class="space-y-2 text-lg"><li>Meridian Arts Journal</li><li>The Quarterly Brush</li><li>Daily Chronicle · Culture</li></ul></div>
+    </div>
+  </section>
+
+  <section class="py-24 text-center"><div class="max-w-3xl mx-auto px-5 reveal">
+    <h2 class="display text-5xl md:text-7xl leading-none mb-8">Come and see the <em>studio.</em></h2>
+    <a href="contact.html" class="btn btn-ink">Arrange a visit <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div></section>
+</main>
+<div id="site-footer"></div>
+<script src="js/art.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script>
+  Site.init({ active: 'about.html' });
+  document.getElementById('a1').innerHTML = Site.img({ seed: 'artist-studio', style: 'portrait', pal: 'clay', title: 'The artist' }, { ratio: 4 / 5, cls: 'w-full block shadow-2xl', res: 800 });
+  document.getElementById('a2').innerHTML = Site.img({ seed: 'studio-easel', style: 'stilllife', pal: 'ochre', title: 'The studio' }, { ratio: 1, cls: 'w-full block', res: 500 });
+  document.getElementById('timeline').innerHTML = SITE.TIMELINE.map(([y, t, s]) => `<li class="reveal grid grid-cols-[90px_1fr] md:grid-cols-[140px_1fr] gap-4 py-6 border-b border-ink/15"><span class="display text-4xl md:text-5xl text-ember">${y}</span><div><p class="display text-2xl md:text-3xl leading-tight">${Site.esc(t)}</p><p class="eyebrow text-smoke mt-2">${Site.esc(s)}</p></div></li>`).join('');
+  Site.refresh();
+</script>
+</body>
+</html>

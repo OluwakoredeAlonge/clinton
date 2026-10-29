@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Studio Desk — Clinton Vane</title>
+  <meta name="robots" content="noindex">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="js/config.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+</head>
+<body class="grain">
+<div id="site-header"></div>
+<main class="pt-28 md:pt-32 pb-24">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+    <div class="flex flex-wrap items-end justify-between gap-6 mb-10">
+      <div>
+        <p class="eyebrow text-smoke mb-3 flex items-center gap-2"><i data-lucide="lock-keyhole" class="w-3.5 h-3.5"></i>Studio desk · private</p>
+        <h1 class="display text-6xl md:text-8xl leading-[.9]">New <em>exhibition</em></h1>
+      </div>
+      <div class="flex gap-3 flex-wrap">
+        <button id="a-sample" class="btn btn-line"><i data-lucide="wand-sparkles" class="w-4 h-4"></i>Fill with sample</button>
+        <button id="a-new" class="btn btn-line"><i data-lucide="file-plus" class="w-4 h-4"></i>Start blank</button>
+      </div>
+    </div>
+    <p class="max-w-2xl text-smoke mb-12">Everything a show needs, in one place: dates, venue, the statement, every room, every painting and the photographs from the day. This frontend stores uploads in this browser only. When the backend is connected, the same form posts to the server and the exhibition appears on the public site.</p>
+
+    <div class="grid lg:grid-cols-[1fr_400px] gap-12 items-start">
+      <form id="form" class="space-y-10" onsubmit="return false"></form>
+      <aside class="lg:sticky lg:top-28 space-y-5">
+        <div id="preview"></div>
+        <div class="flex flex-col gap-3">
+          <button id="a-publish" class="btn btn-ink justify-center"><i data-lucide="send" class="w-4 h-4"></i>Publish to site</button>
+          <button id="a-draft" class="btn btn-line justify-center"><i data-lucide="save" class="w-4 h-4"></i>Save as draft</button>
+          <a id="a-open" href="#" class="btn btn-line justify-center hidden"><i data-lucide="external-link" class="w-4 h-4"></i>Open exhibition page</a>
+        </div>
+      </aside>
+    </div>
+
+    <section class="mt-24">
+      <h2 class="display text-5xl mb-6">Saved <em>exhibitions</em></h2>
+      <div id="saved" class="border-t border-ink/15"></div>
+    </section>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="js/art.js"></script>
+<script src="js/data.js"></script>
+<script src="js/layout.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>
